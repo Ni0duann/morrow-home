@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Local tooling artifacts
+.env
+.env.*
+.scratch/
+*.qoder.site
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
