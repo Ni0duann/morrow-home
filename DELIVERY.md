@@ -1,7 +1,8 @@
 # 交付说明
 
-- 线上演示：<https://morrow-home-r60za7sywlh.qoder.zone/>（公开访问，无需登录）
-- 源码：本目录，启动方式见 [README.md](README.md)。仓库包含 `package.json` 与 `pnpm-lock.yaml`，不包含 `node_modules`、`dist`、`.env` 或任何密钥。
+- 线上演示（GitHub Pages）：<https://ni0duann.github.io/morrow-home/>
+- 线上演示（Qoder Sites）：<https://morrow-home-r60za7sywlh.qoder.zone/>
+- 源码：<https://github.com/Ni0duann/morrow-home>，启动方式见 [README.md](README.md)。仓库包含 `package.json` 与 `pnpm-lock.yaml`，不包含 `node_modules`、`dist`、`.env` 或任何密钥。
 
 ## 完成范围
 
@@ -34,6 +35,7 @@
 | 返回 | 从 Lighting 筛选进入详情再返回 | 回到 `/?category=lighting`，结果仍为 3 件 |
 | 404 | 未知商品 slug 与未知路由 | 均显示 404 页面并可返回首页 |
 | 线上 | 匿名访问、深链 `/products/arc-desk-lamp`、`/cart`、查询参数 | 均正常渲染，SPA 回退生效 |
+| GitHub Pages | 匿名访问首页、深链、`?q=lamp&sort=price-asc` | 正常渲染，搜索返回 2 件；深链经 `404.html` 回退，HTTP 状态为 404 |
 
 说明：只验证了 Chromium 内核，Safari/iOS 真机未测；没有编写自动化测试；录制视频需在本地完成。上述交互验证过程中未观察到控制台报错。
 
@@ -45,7 +47,7 @@
 - 售罄状态是静态数据，没有库存扣减；结账按钮只弹提示。
 - 购物车存在浏览器本地，换设备或清缓存后不会同步。
 - 商品图使用懒加载，弱网下滚动到新行时会先看到沙色占位背景。
-- 使用 `BrowserRouter`，自建静态托管时需要把未知路径回写到 `index.html`；本次 Qoder Sites 已开启 SPA 回退。
+- 使用 `BrowserRouter`，自建静态托管时需要把未知路径回写到 `index.html`；Qoder Sites 已开启 SPA 回退。GitHub Pages 用 `404.html` 复制回退，深链页面可用但 HTTP 状态码是 404。
 - 线上站点右下角的 “Made with Qoder” 标识由托管平台注入，不属于应用代码。
 
 ## 取舍

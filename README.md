@@ -2,7 +2,9 @@
 
 面向海外消费者的商品选购 Demo：12 件家居商品，支持中英文浏览、搜索筛选、查看详情、选择色号并加入购物车。桌面与移动端共用一套响应式界面。
 
-线上地址：<https://morrow-home-r60za7sywlh.qoder.zone/>
+- GitHub Pages：<https://ni0duann.github.io/morrow-home/>
+- Qoder Sites：<https://morrow-home-r60za7sywlh.qoder.zone/>
+- 源码：<https://github.com/Ni0duann/morrow-home>
 
 ![首页](docs/screenshots/home-desktop.webp)
 
@@ -32,6 +34,12 @@ pnpm lint         # oxlint
 ```
 
 手机真机调试可用 `pnpm dev --host`。
+
+## 部署
+
+推送到 `main` 会触发 `.github/workflows/deploy-pages.yml`，自动构建并发布到 GitHub Pages。构建时通过 `BASE_PATH` 注入仓库子路径，本地默认使用根路径。
+
+GitHub Pages 没有服务端重写，深链依靠 `index.html` 复制出的 `404.html` 回退：页面能正常打开，但 HTTP 状态码是 404。需要正确的状态码时使用 Qoder Sites 地址。
 
 ## 目录结构
 
@@ -70,6 +78,7 @@ CONTEXT.md                    # 领域术语表
 - 无后端、登录、库存校验与真实支付；购物车只存在当前浏览器。
 - 金额仅计算商品小计，不含运费和税费，统一以 USD 显示。
 - 搜索是本地包含匹配，当前数据量下即时；数据规模变大后需要索引或服务端搜索。
+- GitHub Pages 的深链通过 `404.html` 回退渲染，HTTP 状态码为 404；Qoder Sites 版本已启用正常的 SPA 回退。
 - 没有自动化测试，验证方式见 `DELIVERY.md`。
 
 ## 验证
